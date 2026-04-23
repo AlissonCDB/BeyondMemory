@@ -112,7 +112,7 @@ export default function HomeScreen() {
       <View className="px-6 pt-4 flex-row justify-between items-center">
         <View>
           <Text className="text-3xl font-bold text-color5">Além da Memória</Text>
-          <Text className="text-sm text-color3 font-medium">Sua estante cinematográfica</Text>
+          <Text className="text-sm text-color3 font-medium">Sua estante de filmes, series e animes</Text>
         </View>
 
         <TouchableOpacity
