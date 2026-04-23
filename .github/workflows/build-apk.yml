@@ -20,10 +20,11 @@ jobs:
       - name: Instalar EAS CLI Globalmente
         run: npm install -g eas-cli
 
+      - name: Limpar Cache do NPM
+        run: npm cache clean --force
+
       - name: Instalar Dependencias do Projeto
-        run: |
-          npm cache clean --force
-          npm install --no-package-lock --legacy-peer-deps
+        run: npm install --no-package-lock --legacy-peer-deps
 
       - name: Construir o APK no EAS
         run: eas build --platform android --profile preview --non-interactive
