@@ -12,22 +12,22 @@ jobs:
       - name: Checkout do Repositorio
         uses: actions/checkout@v4
 
-      - name: Configurar o Node.js
+      - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: 'npm'
 
-      - name: Instalar EAS CLI Globalmente
-        run: npm install -g eas-cli
+      - name: Configurar EAS CLI
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Limpar Cache do NPM
-        run: npm cache clean --force
-
-      - name: Instalar Dependencias do Projeto
-        run: npm install --no-package-lock --legacy-peer-deps
+      - name: Instalar Dependencias
+        run: npm install --legacy-peer-deps
 
       - name: Construir o APK no EAS
         run: eas build --platform android --profile preview --non-interactive
         env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           EXPO_PUBLIC_TMDB_API_KEY: ${{ secrets.EXPO_PUBLIC_TMDB_API_KEY }}
