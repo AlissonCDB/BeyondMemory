@@ -21,7 +21,9 @@ jobs:
         run: npm install -g eas-cli
 
       - name: Instalar Dependencias do Projeto
-        run: npm install
+        run: |
+          npm cache clean --force
+          npm install --no-package-lock --legacy-peer-deps
 
       - name: Construir o APK no EAS
         run: eas build --platform android --profile preview --non-interactive
