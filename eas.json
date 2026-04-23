@@ -1,13 +1,15 @@
 {
   "cli": {
-    "version": ">= 7.6.0"
+    "version": ">= 18.8.1",
+    "appVersionSource": "local"
   },
   "build": {
-    "preview": {
+    "production": {
       "android": {
         "buildType": "apk"
       }
-    },
-    "production": {}
-  }
+    }
+  },
+  "submit": {},
+  "env": {}
 }
