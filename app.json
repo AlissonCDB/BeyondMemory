@@ -1,8 +1,9 @@
 {
   "expo": {
-    "name": "lista-leitura",
-    "slug": "lista-leitura",
+    "name": "Alem da Memoria",
+    "slug": "alem-da-memoria",
     "version": "1.0.0",
+    "scheme": "alem-da-memoria",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",

@@ -1,40 +1,37 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-// Importando o tipo conforme o caminho que você indicou
-import { BookFilter } from '../types/book'; 
+import { Ionicons } from '@expo/vector-icons';
 
 interface EmptyStateProps {
-  filter: BookFilter;
-  title?: string; // Adicionando o title como opcional
+  title?: string;
+  description?: string;
+  icon?: keyof typeof Ionicons.glyphMap;
 }
 
-const MESSAGES = {
-  empty: {
-    emoji: '📚',
-    title: 'Sua estante está vazia!',
-    subtitle: 'Toque no botão + para adicionar seu primeiro livro, mangá ou HQ.',
-  },
-  filtered: {
-    emoji: '🔍',
-    title: 'Nenhum item encontrado',
-    subtitle: 'Você ainda não cadastrou nada nesta categoria específica.',
-  },
-};
-
-export function EmptyState({ filter, title }: EmptyStateProps) {
-  // Se o filtro for 'all', mostra mensagem de banco vazio. 
-  // Caso contrário, mostra que não há nada naquela categoria.
-  const content = filter === 'all' ? MESSAGES.empty : MESSAGES.filtered;
-
+export function EmptyState({ 
+  title = "Sua estante esta vazia", 
+  description = "Comece adicionando filmes e series clicando no botao superior.",
+  icon = "film-outline"
+}: EmptyStateProps) {
   return (
-    <View className="flex-1 items-center justify-center px-8 py-16">
-      <Text className="text-6xl mb-4">{content.emoji}</Text>
-      <Text className="text-xl font-bold text-gray-700 text-center mb-2">
-        {title || content.title}
+    <View className="flex-1 items-center justify-center py-20 px-10">
+      {/* Container do Icone com Fundo Sutil */}
+      <View className="w-24 h-24 bg-slate-100 rounded-full items-center justify-center mb-6">
+        <Ionicons name={icon} size={48} color="#475569" />
+      </View>
+
+      {/* Texto Principal */}
+      <Text className="text-xl font-bold text-slate-800 text-center mb-2">
+        {title}
       </Text>
-      <Text className="text-sm text-gray-400 text-center leading-5">
-        {content.subtitle}
+
+      {/* Subtexto Descritivo */}
+      <Text className="text-sm text-slate-500 text-center leading-5">
+        {description}
       </Text>
+      
+      {/* Elemento Decorativo Inferior */}
+      <View className="w-12 h-1 bg-slate-200 rounded-full mt-8" />
     </View>
   );
 }
