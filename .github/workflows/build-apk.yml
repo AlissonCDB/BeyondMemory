@@ -22,8 +22,11 @@ jobs:
           eas-version: 18.8.1
           token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Instalar Dependencias
-        run: npm install --legacy-peer-deps
+      - name: Instalar Dependencias (Forçando binários do Linux)
+        run: |
+          rm -f package-lock.json
+          npm install --legacy-peer-deps
+          npm install --save-dev lightningcss
 
       - name: Construir o APK no EAS
         run: eas build --platform android --profile preview --non-interactive
