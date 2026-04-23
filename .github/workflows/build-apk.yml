@@ -19,7 +19,7 @@ jobs:
       - name: Configurar EAS CLI
         uses: expo/expo-github-action@v8
         with:
-          eas-version: latest
+          eas-version: 18.8.1  # Especifique a versão aqui
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: Instalar Dependencias
